@@ -49,7 +49,7 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/press_me_button"
+                android:id="@+id/add_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -71,7 +71,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/press_me_too_button"
+        android:id="@+id/compute_button"
         android:layout_width="174dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

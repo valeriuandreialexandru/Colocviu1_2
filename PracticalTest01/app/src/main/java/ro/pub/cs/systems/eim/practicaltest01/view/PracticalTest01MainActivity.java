@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import ro.pub.cs.systems.eim.practicaltest01.R;
@@ -18,11 +19,10 @@ import ro.pub.cs.systems.eim.practicaltest01.service.PracticalTest01Service;
 
 public class PracticalTest01MainActivity extends AppCompatActivity {
 
-    private EditText leftEditText;
+    private EditText e1;
     private Button pressMeButton;
-   // private Button navigateToSecondaryActivityButton;
+    private TextView t1;
 
-    private int serviceStatus = Constants.SERVICE_STOPPED;
 
     private IntentFilter intentFilter = new IntentFilter();
 
@@ -32,41 +32,35 @@ public class PracticalTest01MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-            int leftNumberOfClicks = Integer.valueOf(leftEditText.getText().toString());
 
+            String AllTerms = " ";
 
-            leftEditText.setText(String.valueOf(leftNumberOfClicks));
+            if(e1 != null) {
+            }
+
+            e1.setText(String.valueOf(AllTerms));
         }
     }
 
-    private MessageBroadcastReceiver messageBroadcastReceiver = new MessageBroadcastReceiver();
-
-    private class MessageBroadcastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Log.d(Constants.BROADCAST_RECEIVER_TAG, intent.getStringExtra(Constants.BROADCAST_RECEIVER_EXTRA));
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practical_test01_main);
 
-
-        pressMeButton = (Button)findViewById(R.id.press_me_button);
+        pressMeButton = (Button)findViewById(R.id.add_button);
         pressMeButton.setOnClickListener(buttonClickListener);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(messageBroadcastReceiver, intentFilter);
+
     }
 
     @Override
     protected void onPause() {
-        unregisterReceiver(messageBroadcastReceiver);
+
         super.onPause();
     }
 
@@ -76,10 +70,6 @@ public class PracticalTest01MainActivity extends AppCompatActivity {
         stopService(intent);
         super.onDestroy();
     }
-
-
-
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
