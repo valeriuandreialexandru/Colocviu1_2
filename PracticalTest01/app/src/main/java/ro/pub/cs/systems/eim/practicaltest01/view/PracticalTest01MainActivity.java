@@ -71,10 +71,4 @@ public class PracticalTest01MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == Constants.SECONDARY_ACTIVITY_REQUEST_CODE) {
-            Toast.makeText(this, "The activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
-        }
-    }
 }
