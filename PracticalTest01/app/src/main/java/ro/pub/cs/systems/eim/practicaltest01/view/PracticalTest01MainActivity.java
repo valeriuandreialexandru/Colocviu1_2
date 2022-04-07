@@ -19,9 +19,8 @@ import ro.pub.cs.systems.eim.practicaltest01.service.PracticalTest01Service;
 public class PracticalTest01MainActivity extends AppCompatActivity {
 
     private EditText leftEditText;
-    private EditText rightEditText;
-    private Button pressMeButton, pressMeTooButton;
-    private Button navigateToSecondaryActivityButton;
+    private Button pressMeButton;
+   // private Button navigateToSecondaryActivityButton;
 
     private int serviceStatus = Constants.SERVICE_STOPPED;
 
@@ -30,11 +29,12 @@ public class PracticalTest01MainActivity extends AppCompatActivity {
     private ButtonClickListener buttonClickListener = new ButtonClickListener();
     private class ButtonClickListener implements View.OnClickListener {
 
+
         @Override
         public void onClick(View view) {
             int leftNumberOfClicks = Integer.valueOf(leftEditText.getText().toString());
 
-           //int sumNumberOfClicks = sumNumberOfClicks + leftNumberOfClicks +;
+
             leftEditText.setText(String.valueOf(leftNumberOfClicks));
         }
     }
@@ -53,7 +53,6 @@ public class PracticalTest01MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_practical_test01_main);
 
-    //    leftEditText = (EditText)findViewById(R.id.left_edit_text);
 
         pressMeButton = (Button)findViewById(R.id.press_me_button);
         pressMeButton.setOnClickListener(buttonClickListener);
@@ -78,25 +77,9 @@ public class PracticalTest01MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putString(Constants.LEFT_COUNT, leftEditText.getText().toString());
-        savedInstanceState.putString(Constants.RIGHT_COUNT, rightEditText.getText().toString());
-    }
 
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        if (savedInstanceState.containsKey(Constants.LEFT_COUNT)) {
-            leftEditText.setText(savedInstanceState.getString(Constants.LEFT_COUNT));
-        } else {
-            leftEditText.setText(String.valueOf(0));
-        }
-        if (savedInstanceState.containsKey(Constants.RIGHT_COUNT)) {
-            rightEditText.setText(savedInstanceState.getString(Constants.RIGHT_COUNT));
-        } else {
-            rightEditText.setText(String.valueOf(0));
-        }
-    }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
